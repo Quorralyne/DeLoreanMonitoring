@@ -45,3 +45,4 @@
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.pdb
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.genruntimeconfig.cache
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/ref/DeLoreanMonitoring.dll
+/Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.sourcelink.json

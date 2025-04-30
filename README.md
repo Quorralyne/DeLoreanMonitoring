@@ -125,7 +125,7 @@ The DeLorean Monitoring system uses a three-tier architecture to collect, store,
 2. **Import the Dashboard**
    - Go to Dashboards > Import
    - Click "Import" in Grafana
-   - Upload the `grafana/delorean_monitoring_dashboard.json` file from this repo
+   - Upload the `DeLoreanMonitoring/grafana/delorean_monitoring_dashboard.json` file from this repo
    - Select your InfluxDB data source when prompted
    - Click "Import"
 

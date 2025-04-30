@@ -111,10 +111,10 @@ The DeLorean Monitoring system uses a three-tier architecture to collect, store,
    - Navigate to Configuration > Data Sources
    - Click "Add data source" and select "InfluxDB"
    - Configure with these settings:
-     - Name: DeLorean Monitoring
+     - Name: DeLorean_Monitoring
      - URL: Your InfluxDB Cloud URL (without the /api/v2/write path)
      - Query Language: SQL
-     - Database: `YOUR_ORG_NAME/gigawatt_metrics` (replace with your org name)
+     - Database: `gigawatt_metrics` 
      - Token: Your InfluxDB API token
    - Add these HTTP Headers:
      - Name: `Authorization`, Value: `Token YOUR_INFLUX_TOKEN`
@@ -125,20 +125,23 @@ The DeLorean Monitoring system uses a three-tier architecture to collect, store,
 2. **Import the Dashboard**
    - Go to Dashboards > Import
    - Click "Import" in Grafana
-   - Upload the `grafana/delorean_monitoring_dashboard.json` file from this repo
+   - Upload the `DeLoreanMonitoring/grafana/delorean_monitoring_dashboard.json` file from this repo
    - Select your InfluxDB data source when prompted
    - Click "Import"
 
 3. **Configure Dashboard Panels**
-   - After importing, you'll need to manually refresh each panel:
+   - After importing, you'll need to manually configure each panel:
    - Click on a panel title and select "Edit"
-   - Select your "DeLorean Monitoring" data source again to refresh
-   - You should see data visually appear
-   - Repeat for all panels
+   - Select your "DeLorean_Monitoring" data source
+   - Go to the "Code" tab (not "Builder")
+   - Add the appropriate SQL query for each panel (see below)
+   - Click "Run query" to test
+   - Click "Apply"
+   - Repeat for all four panels
 
 ## SQL Queries for Dashboard Panels
 
-Here are the SQL queries for each panel in the dashboard:
+Here are the SQL queries for each panel in the updated dashboard:
 
 **DeLorean Velocity**
 ```sql
@@ -161,38 +164,11 @@ FROM "delorean_stats"
 WHERE device = 'engine' AND time >= now() - interval '1 minute'
 ```
 
-**Temporal Stability**
-```sql
-SELECT time, temporal_stability 
-FROM "delorean_detailed" 
-WHERE time >= now() - interval '15 minutes' 
-GROUP BY id
-```
-
-**Time Period Visits by Location**
-```sql
-SELECT COUNT(*) 
-FROM "delorean_detailed" 
-WHERE time >= now() - interval '1 hour' 
-GROUP BY time_period, location
-```
-
 **Time Travel Prediction**
 ```sql
 SELECT MAX(velocity_mph) as max_velocity 
 FROM "delorean_stats" 
 WHERE device = 'speedometer' AND time >= now() - interval '5 minutes'
-```
-
-**Cardinality Analysis**
-```sql
-SELECT 
-  COUNT(DISTINCT id) as unique_deloreans, 
-  COUNT(DISTINCT location) as unique_locations, 
-  COUNT(DISTINCT time_period) as unique_time_periods, 
-  COUNT(DISTINCT driver) as unique_drivers 
-FROM "delorean_detailed" 
-WHERE time >= now() - interval '1 hour'
 ```
 
 ## Features
@@ -220,12 +196,20 @@ This demo showcases:
 - Check network connectivity to InfluxDB Cloud
 - Confirm the bucket "gigawatt_metrics" exists
 
-![Panel Data Issue](./nodata-screenshot.png)
+![Grafana Dashboard No Data](./nodata-screenshot.png)
 
 ### Grafana Dashboard Issues
 - Ensure your data source configuration is correct
 - Verify each panel has the proper SQL query
 - Check that the time range includes data points
+- If panels still don't display data, try these simplified queries:
+  ```sql
+  -- Basic velocity check
+  SELECT velocity_mph FROM "delorean_stats" WHERE device = 'speedometer' LIMIT 10
+  
+  -- Basic flux capacitor check
+  SELECT power_level FROM "delorean_stats" WHERE device = 'flux_capacitor' LIMIT 10
+  ```
 
 ### .NET Application Errors
 - Make sure all required packages are installed

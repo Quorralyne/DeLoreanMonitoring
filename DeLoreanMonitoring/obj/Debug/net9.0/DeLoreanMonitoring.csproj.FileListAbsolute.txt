@@ -39,10 +39,10 @@
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.AssemblyInfoInputs.cache
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.AssemblyInfo.cs
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.csproj.CoreCompileInputs.cache
+/Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.sourcelink.json
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLorean.F0189644.Up2Date
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.dll
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/refint/DeLoreanMonitoring.dll
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.pdb
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.genruntimeconfig.cache
 /Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/ref/DeLoreanMonitoring.dll
-/Users/quorr/Documents/GitHub/DeLoreanMonitoring/DeLoreanMonitoring/obj/Debug/net9.0/DeLoreanMonitoring.sourcelink.json

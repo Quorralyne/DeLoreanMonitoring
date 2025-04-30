@@ -35,6 +35,9 @@ namespace DeLoreanMonitoring
         private double _currentVelocity = 0;
         private double _powerLevel = 0;
         private double _temperature = 70;
+        private double _plutoniumLevel = 85;  // New parameter for Mr. Fusion
+        private double _circuitVoltage = 12.0; // New parameter for Time Circuits
+        private bool _circuitsActive = true;   // Track if time circuits are active
         private string _currentLocation = "Hill Valley";
         private DateTime _targetDate = new DateTime(1985, 10, 26);
         private readonly Random _random = new Random();
@@ -92,6 +95,11 @@ namespace DeLoreanMonitoring
             lines.Add($"delorean_stats,device=engine temperature_f={_temperature} {timestamp.ToUnixTimeMilliseconds() * 1000000}");
             lines.Add($"delorean_stats,device=navigation current_location=\"{_currentLocation}\" {timestamp.ToUnixTimeMilliseconds() * 1000000}");
             
+            // New metrics for the enhanced dashboard
+            lines.Add($"delorean_stats,device=mr_fusion plutonium_level={_plutoniumLevel} {timestamp.ToUnixTimeMilliseconds() * 1000000}");
+            lines.Add($"delorean_stats,device=time_circuits voltage={_circuitVoltage} {timestamp.ToUnixTimeMilliseconds() * 1000000}");
+            lines.Add($"delorean_stats,device=time_circuits status=\"{(_circuitsActive ? "active" : "inactive")}\" {timestamp.ToUnixTimeMilliseconds() * 1000000}");
+            
             // High cardinality data - generate many unique tag combinations
             for (int i = 0; i < 20; i++)
             {
@@ -122,14 +130,68 @@ namespace DeLoreanMonitoring
             {
                 _currentVelocity = _random.NextDouble() * 30; // Slow down after time travel
                 _powerLevel = _random.NextDouble() * 20;      // Power drain after time travel
+                _plutoniumLevel = Math.Max(0, _plutoniumLevel - (_random.NextDouble() * 15)); // Consume plutonium during time travel
+                
+                // Simulate time circuit instability during time travel
+                _circuitVoltage = 8.0 + (_random.NextDouble() * 3.0);
+                
+                // Small chance time circuits might fail after time travel
+                _circuitsActive = _random.NextDouble() > 0.1;
+                
                 _currentLocation = _locations[_random.Next(_locations.Length)];
                 _targetDate = _targetDate.AddYears(_random.Next(-100, 100));
+                
+                _logger.LogInformation("⚡ TIME TRAVEL EVENT DETECTED! ⚡");
             }
             else
             {
                 // Otherwise make small adjustments to current values
                 _currentVelocity = Math.Min(88, _currentVelocity + (_random.NextDouble() * 10 - 3));
                 _powerLevel = Math.Min(100, _powerLevel + (_random.NextDouble() * 10 - 3));
+                
+                // Gradually decrease plutonium level with normal operation
+                _plutoniumLevel = Math.Max(0, _plutoniumLevel - (_random.NextDouble() * 0.5));
+                
+                // If plutonium gets too low, simulate a refueling
+                if (_plutoniumLevel < 10 && _random.NextDouble() > 0.7)
+                {
+                    _plutoniumLevel = 85 + (_random.NextDouble() * 15);
+                    _logger.LogInformation("Mr. Fusion Refueled!");
+                }
+                
+                // Time circuits voltage fluctuations
+                if (_circuitsActive)
+                {
+                    // Normal voltage is around 12-13V with minor fluctuations
+                    _circuitVoltage = 12.0 + (_random.NextDouble() * 1.0 - 0.5);
+                    
+                    // Randomly simulate a voltage spike or drop
+                    if (_random.NextDouble() > 0.9)
+                    {
+                        if (_random.NextDouble() > 0.5)
+                        {
+                            // Voltage spike
+                            _circuitVoltage = 13.5 + (_random.NextDouble() * 2.0);
+                        }
+                        else
+                        {
+                            // Voltage drop
+                            _circuitVoltage = 10.0 - (_random.NextDouble() * 1.5);
+                        }
+                    }
+                }
+                else
+                {
+                    // Circuits inactive - low voltage with minor noise
+                    _circuitVoltage = 1.0 + (_random.NextDouble() * 0.5);
+                    
+                    // Chance to reactivate circuits
+                    if (_random.NextDouble() > 0.8)
+                    {
+                        _circuitsActive = true;
+                        _logger.LogInformation("Time Circuits Activated!");
+                    }
+                }
                 
                 // Occasionally spike power when approaching 88 mph
                 if (_currentVelocity > 80)

@@ -1,410 +1,616 @@
 {
-    "__inputs": [
-      {
-        "name": "DATASOURCE_DELOREAN_MONITORING",
-        "label": "DeLorean_Monitoring",
-        "description": "",
-        "type": "datasource",
-        "pluginId": "influxdb",
-        "pluginName": "InfluxDB"
-      }
-    ],
-    "__elements": {},
-    "__requires": [
-      {
-        "type": "panel",
-        "id": "gauge",
-        "name": "Gauge",
-        "version": ""
-      },
-      {
-        "type": "grafana",
-        "id": "grafana",
-        "name": "Grafana",
-        "version": "12.0.0-86898"
-      },
-      {
-        "type": "datasource",
-        "id": "influxdb",
-        "name": "InfluxDB",
-        "version": "1.0.0"
-      },
-      {
-        "type": "panel",
-        "id": "stat",
-        "name": "Stat",
-        "version": ""
-      },
-      {
-        "type": "panel",
-        "id": "timeseries",
-        "name": "Time series",
-        "version": ""
-      }
-    ],
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
-          "type": "dashboard"
-        }
-      ]
+  "__inputs": [
+    {
+      "name": "DS_DELOREAN_MONITORING",
+      "label": "DeLorean_Monitoring",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
     },
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "id": null,
-    "links": [],
-    "panels": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "12.0.0-86898"
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
       {
+        "builtIn": 1,
         "datasource": {
-          "type": "influxdb",
-          "uid": "${DS_DELOREAN_MONITORING}"
+          "type": "datasource",
+          "uid": "grafana"
         },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-BlYlRd"
-            },
-            "mappings": [],
-            "max": 150,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "blue"
-                },
-                {
-                  "color": "yellow",
-                  "value": 50
-                },
-                {
-                  "color": "orange",
-                  "value": 100
-                },
-                {
-                  "color": "red",
-                  "value": 121
-                }
-              ]
-            },
-            "unit": "watt"
-          },
-          "overrides": []
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
         },
-        "gridPos": {
-          "h": 9,
-          "w": 8,
-          "x": 0,
-          "y": 0
-        },
-        "id": 4,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": true,
-          "showThresholdMarkers": true,
-          "sizing": "auto",
-          "text": {}
-        },
-        "pluginVersion": "12.0.0-86898",
-        "targets": [
-          {
-            "datasource": {
-              "type": "influxdb",
-              "uid": "${DS_DELOREAN_MONITORING}"
-            },
-            "hide": false,
-            "rawSql": "SELECT time, power_level FROM \"delorean_stats\" WHERE device = 'flux_capacitor' AND time >= now() - interval '15 minutes'",
-            "refId": "A"
-          }
-        ],
-        "title": "Flux Capacitor Power (1.21 Gigawatts = 121)",
-        "type": "gauge"
+        "type": "dashboard"
       },
       {
         "datasource": {
           "type": "influxdb",
           "uid": "${DS_DELOREAN_MONITORING}"
         },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green"
-                },
-                {
-                  "color": "orange",
-                  "value": 150
-                },
-                {
-                  "color": "red",
-                  "value": 200
-                }
-              ]
-            },
-            "unit": "fahrenheit"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 8,
-          "x": 8,
-          "y": 0
-        },
-        "id": 6,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.0.0-86898",
-        "targets": [
-          {
-            "datasource": {
-              "type": "influxdb",
-              "uid": "${DS_DELOREAN_MONITORING}"
-            },
-            "hide": false,
-            "rawSql": "SELECT time, temperature_f FROM \"delorean_stats\" WHERE device = 'engine' AND time >= now() - interval '15 minutes'",
-            "refId": "A"
-          }
-        ],
-        "title": "Engine Temperature",
-        "type": "stat"
+        "enable": true,
+        "iconColor": "#FFD700",
+        "name": "Time Travel Events",
+        "query": "SELECT velocity_mph FROM \"delorean_stats\" WHERE device = 'speedometer' AND velocity_mph >= 88",
+        "showIn": 0,
+        "tags": ["time-travel"],
+        "type": "tags"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
       },
-      {
-        "datasource": {
-          "type": "influxdb",
-          "uid": "${DS_DELOREAN_MONITORING}"
+      "id": 20,
+      "options": {
+        "content": "<div style=\"text-align: center; background: linear-gradient(90deg, #000000, #1e3c72, #2a5298); padding: 10px; border-radius: 5px;\">\n  <h3 style=\"color: #3498db; text-shadow: 0 0 5px #3498db; margin: 0;\">Current Timeline: <span id=\"current-date\">May 1, 2025</span></h3>\n  <p style=\"color: #E6E6FA; margin: 5px 0 0 0; font-size: 14px;\">\"Your future is whatever you make it, so make it a good one!\" - Doc Brown</p>\n  <p style=\"color: #3498db; margin: 0; font-size: 12px;\">DeLorean Monitoring System v1.0 | © 2025 Temporal Research Labs</p>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.0-86898",
+      "type": "text",
+      "title": ""
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_DELOREAN_MONITORING}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "mappings": [],
+          "max": 150,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46"
+              },
+              {
+                "color": "#EAB839",
+                "value": 50
+              },
+              {
+                "color": "#EF843C",
+                "value": 100
+              },
+              {
+                "color": "#E24D42",
+                "value": 121
+              },
+              {
+                "color": "#8F3BB8",
+                "value": 130
+              }
+            ]
+          },
+          "unit": "watt"
         },
-        "description": "Shows prediction of next time travel event",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 3
+      },
+      "id": 4,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto",
+        "text": {},
+        "displayMode": "lcd"
+      },
+      "pluginVersion": "12.0.0-86898",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_DELOREAN_MONITORING}"
+          },
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT time, power_level FROM \"delorean_stats\" WHERE device = 'flux_capacitor' AND time >= now() - interval '15 minutes'",
+          "refId": "A"
+        }
+      ],
+      "title": "Flux Capacitor Power (1.21 Gigawatts = 121)",
+      "type": "gauge",
+      "panelDescription": "Monitors the power level of the Flux Capacitor. Doc Brown's invention requires exactly 1.21 gigawatts of electrical power to operate."
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_DELOREAN_MONITORING}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "yellow",
+                "value": 60
+              },
+              {
+                "color": "orange",
+                "value": 75
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          },
+          "unit": "velocitymiph"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 3
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0-86898",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_DELOREAN_MONITORING}"
+          },
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT time, velocity_mph FROM \"delorean_stats\" WHERE device = 'speedometer' AND time >= now() - interval '5 minutes'",
+          "refId": "A"
+        }
+      ],
+      "title": "Current Speed / Time Travel Threshold",
+      "type": "stat",
+      "panelDescription": "The DeLorean must reach exactly 88 mph to initiate temporal displacement. This panel shows our current speed and proximity to the time travel threshold."
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_DELOREAN_MONITORING}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#EAB839"
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 50
+              },
+              {
+                "color": "#8F3BB8",
+                "value": 75
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 3
+      },
+      "id": 14,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "12.0.0-86898",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_DELOREAN_MONITORING}"
+          },
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT time, plutonium_level FROM \"delorean_stats\" WHERE device = 'mr_fusion' AND time >= now() - interval '15 minutes'",
+          "refId": "A"
+        }
+      ],
+      "title": "Mr. Fusion Fuel Level",
+      "type": "gauge",
+      "panelDescription": "Plutonium level in the Mr. Fusion Home Energy Reactor. This upgraded power source replaced the original plutonium nuclear reactor in 2015."
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_DELOREAN_MONITORING}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green"
-                },
-                {
-                  "color": "yellow",
-                  "value": 60
-                },
-                {
-                  "color": "orange",
-                  "value": 75
-                },
-                {
-                  "color": "red",
-                  "value": 85
-                }
-              ]
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
           },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 7,
-          "x": 16,
-          "y": 0
-        },
-        "id": 12,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.0.0-86898",
-        "targets": [
-          {
-            "datasource": {
-              "type": "influxdb",
-              "uid": "${DS_DELOREAN_MONITORING}"
-            },
-            "hide": false,
-            "rawSql": "SELECT time, velocity_mph FROM \"delorean_stats\" WHERE device = 'speedometer' AND time >= now() - interval '5 minutes'",
-            "refId": "A"
-          }
-        ],
-        "title": "Time Travel Prediction",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "influxdb",
-          "uid": "${DS_DELOREAN_MONITORING}"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 20,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "line+area"
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
               }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green"
-                },
-                {
-                  "color": "red",
-                  "value": 88
-                }
-              ]
-            },
-            "unit": "velocitymiph"
+            ]
           },
-          "overrides": []
+          "unit": "volt"
         },
-        "gridPos": {
-          "h": 7,
-          "w": 23,
-          "x": 0,
-          "y": 9
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 11
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
-        "id": 2,
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "max"
-            ],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0-86898",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_DELOREAN_MONITORING}"
           },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT time, voltage FROM \"delorean_stats\" WHERE device = 'time_circuits' AND time >= now() - interval '15 minutes'",
+          "refId": "A"
+        }
+      ],
+      "title": "Time Circuits Power Stability",
+      "type": "timeseries",
+      "panelDescription": "Monitors the stability of the time circuits. Voltage fluctuations could result in inaccurate temporal destinations."
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_DELOREAN_MONITORING}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46"
+              },
+              {
+                "color": "#EF843C",
+                "value": 150
+              },
+              {
+                "color": "#E24D42",
+                "value": 200
+              }
+            ]
+          },
+          "unit": "fahrenheit"
         },
-        "pluginVersion": "12.0.0-86898",
-        "targets": [
-          {
-            "datasource": {
-              "type": "influxdb",
-              "uid": "${DS_DELOREAN_MONITORING}"
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 11
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0-86898",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_DELOREAN_MONITORING}"
+          },
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT time, temperature_f FROM \"delorean_stats\" WHERE device = 'engine' AND time >= now() - interval '15 minutes'",
+          "refId": "A"
+        }
+      ],
+      "title": "Engine Temperature",
+      "type": "stat",
+      "panelDescription": "The DeLorean's modified V6 PRV (Peugeot-Renault-Volvo) engine temperature. Critical for maintaining stability during time jumps."
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_DELOREAN_MONITORING}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
             },
-            "hide": false,
-            "rawSql": "SELECT time, velocity_mph FROM \"delorean_stats\" WHERE device = 'speedometer' AND time >= now() - interval '15 minutes'",
-            "refId": "A"
-          }
-        ],
-        "title": "DeLorean Velocity (88 mph threshold)",
-        "type": "timeseries"
-      }
-    ],
-    "refresh": "5s",
-    "schemaVersion": 41,
-    "tags": [
-      "delorean",
-      "time-series"
-    ],
-    "templating": {
-      "list": []
-    },
-    "time": {
-      "from": "now-15m",
-      "to": "now"
-    },
-    "timepicker": {},
-    "timezone": "",
-    "title": "DeLorean Monitoring Dashboard",
-    "uid": "",
-    "version": 2,
-    "weekStart": ""
-  }
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#FFD700",
+                "value": 88
+              }
+            ]
+          },
+          "unit": "velocitymiph"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 11
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0-86898",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_DELOREAN_MONITORING}"
+          },
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT time, velocity_mph FROM \"delorean_stats\" WHERE device = 'speedometer' AND time >= now() - interval '15 minutes'",
+          "refId": "A"
+        }
+      ],
+      "title": "DeLorean Velocity (88 mph Time Travel Threshold)",
+      "type": "timeseries",
+      "panelDescription": "Historical velocity chart showing the approach to 88 mph. Each spike crossing the threshold line represents a time travel event."
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 41,
+  "style": "dark",
+  "tags": [
+    "delorean",
+    "time-series",
+    "back-to-the-future"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "DeLorean DMC-12 Time Machine Monitoring",
+  "uid": "",
+  "version": 2,
+  "weekStart": ""
+}

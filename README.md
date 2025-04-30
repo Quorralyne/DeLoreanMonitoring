@@ -181,6 +181,35 @@ This demo showcases:
 4. **Real-time Visualization**: Monitor DeLorean metrics as they happen
 5. **Predictive Analytics**: Simple forecasting without complex data science
 
+## Dashboard Panels & Time-Based Analysis
+
+The dashboard provides a complete view of DeLorean metrics through four carefully designed panels, each representing a different aspect of time-based analysis:
+
+### 1. Flux Capacitor Power (Present Status)
+- **Type**: Gauge panel showing current power at 121W (1.21 gigawatts)
+- **Purpose**: Real-time monitoring of current power levels
+- **Insight**: Indicates if the DeLorean has sufficient power for time travel
+- **Back to the Future Reference**: Doc Brown's famous "1.21 gigawatts!" exclamation
+
+### 2. Engine Temperature (Present + Recent Trends)
+- **Type**: Stat panel with area graph
+- **Purpose**: Current reading with immediate historical context
+- **Insight**: Shows if engine temperature is stable or fluctuating
+- **Importance**: Critical for safe operation across different time periods
+
+### 3. Time Travel Prediction (Future Analysis)
+- **Type**: Stat panel showing predictive metric
+- **Purpose**: Forecasts when time travel conditions will be met
+- **Insight**: When this value reaches 88, time travel is imminent
+- **Back to the Future Reference**: Predictive analytics for time travel events
+
+### 4. DeLorean Velocity (Historical Analysis)
+- **Type**: Time series chart over 15 minutes
+- **Purpose**: Historical pattern analysis
+- **Insight**: Shows velocity patterns with 88 mph threshold line
+- **Back to the Future Reference**: Each spike to 88 mph followed by a drop represents a time travel event
+- **Pattern**: The recurring build-up to 88 mph shows multiple time travel occurrences
+
 ## Project Structure
 
 - **Program.cs**: Main .NET console application for generating time series data
@@ -195,8 +224,6 @@ This demo showcases:
 - Verify your API token and organization name
 - Check network connectivity to InfluxDB Cloud
 - Confirm the bucket "gigawatt_metrics" exists
-
-![Grafana Dashboard No Data](./nodata-screenshot.png)
 
 ### Grafana Dashboard Issues
 - Ensure your data source configuration is correct

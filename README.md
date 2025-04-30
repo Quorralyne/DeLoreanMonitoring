@@ -1,5 +1,7 @@
 # DeLorean Monitoring - Example for Time Series Data
 
+![DeLorean Monitoring Dashboard](./dashboard-screenshot.png)
+
 A demonstration project showing how to work with time series data using modern tools and techniques, all presented with a fun "Back to the Future" theme!
 
 ## Architecture Overview
@@ -128,20 +130,11 @@ The DeLorean Monitoring system uses a three-tier architecture to collect, store,
    - Click "Import"
 
 3. **Configure Dashboard Panels**
-   - After importing, you'll need to manually add the SQL query for each panel:
+   - After importing, you'll need to manually refresh each panel:
    - Click on a panel title and select "Edit"
-   - Select your "DeLorean Monitoring" data source
-   - Go to the "Code" tab (not "Builder")
-   - Enter the SQL query for that panel (see SQL Queries section below)
-   - Click "Run query" to test
-   - Click "Apply"
+   - Select your "DeLorean Monitoring" data source again to refresh
+   - You should see data visually appear
    - Repeat for all panels
-
-4. **Set Dashboard Preferences**
-   - Click the gear icon in the upper right
-   - Set refresh rate to 5s
-   - Set time range to "Last 15 minutes"
-   - Click "Save"
 
 ## SQL Queries for Dashboard Panels
 
@@ -226,6 +219,8 @@ This demo showcases:
 - Verify your API token and organization name
 - Check network connectivity to InfluxDB Cloud
 - Confirm the bucket "gigawatt_metrics" exists
+
+![Panel Data Issue](./nodata-screenshot.png)
 
 ### Grafana Dashboard Issues
 - Ensure your data source configuration is correct

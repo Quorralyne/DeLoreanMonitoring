@@ -294,12 +294,12 @@ The enhanced dashboard provides a complete view of DeLorean metrics through six 
 - Check for runtime errors in the console output
 - Verify that the configuration variables are set correctly in Program.cs
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Build From Scratch
+- A PDF guide of the how the full project was done from scratch is included at the top level of this repo. If you don't want to clone the project and run it, follow the guide for each step of the process.
+- FILENAME: Complete Demo Guide - DeLorean Dashboard - Back to the Future of Time Series Data.pdf
 
 ## Acknowledgments
 
 - Inspired by the "Back to the Future" movie trilogy
-- Built with InfluxDB Cloud, .NET 9, and Grafana
+- Built with InfluxDB 3 Cloud Serverless, .NET 9, and Grafana Cloud
 - Special thanks to Doc Brown and Marty McFly for the DeLorean specs 🚗⚡

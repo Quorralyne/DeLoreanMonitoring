@@ -1,4 +1,4 @@
-# DeLorean Monitoring - Example for Time Series Data in C#
+# DeLorean Monitoring - Example for Time Series Data
 
 ![DeLorean Monitoring Dashboard](./dashboard-screenshot.png)
 

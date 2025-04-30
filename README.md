@@ -122,26 +122,56 @@ The DeLorean Monitoring system uses a three-tier architecture to collect, store,
      - Name: `Accept`, Value: `application/json`
    - Click "Save & Test"
 
-2. **Import the Dashboard**
+2. **Import the Enhanced Dashboard**
    - Go to Dashboards > Import
    - Click "Import" in Grafana
    - Upload the `DeLoreanMonitoring/grafana/delorean_monitoring_dashboard.json` file from this repo
    - Select your InfluxDB data source when prompted
    - Click "Import"
 
-3. **Configure Dashboard Panels**
-   - After importing, you'll need to manually configure each panel:
-   - Click on a panel title and select "Edit"
-   - Select your "DeLorean_Monitoring" data source
-   - Go to the "Code" tab (not "Builder")
-   - Add the appropriate SQL query for each panel (see below)
-   - Click "Run query" to test
-   - Click "Apply"
-   - Repeat for all four panels
+3. **Note About Enhanced Dashboard**
+   - The dashboard has been optimized with a Back to the Future theme
+   - All SQL queries are embedded directly in the dashboard JSON
+   - No manual panel configuration is required after import
 
 ## SQL Queries for Dashboard Panels
 
-Here are the SQL queries for each panel in the updated dashboard:
+The enhanced dashboard includes the following panels, each with its embedded SQL query:
+
+**Flux Capacitor Power**
+```sql
+SELECT time, power_level 
+FROM "delorean_stats" 
+WHERE device = 'flux_capacitor' AND time >= now() - interval '15 minutes'
+```
+
+**Current Speed / Time Travel Threshold**
+```sql
+SELECT time, velocity_mph 
+FROM "delorean_stats" 
+WHERE device = 'speedometer' AND time >= now() - interval '5 minutes'
+```
+
+**Mr. Fusion Fuel Level**
+```sql
+SELECT time, plutonium_level 
+FROM "delorean_stats" 
+WHERE device = 'mr_fusion' AND time >= now() - interval '15 minutes'
+```
+
+**Time Circuits Power Stability**
+```sql
+SELECT time, voltage 
+FROM "delorean_stats" 
+WHERE device = 'time_circuits' AND time >= now() - interval '15 minutes'
+```
+
+**Engine Temperature**
+```sql
+SELECT time, temperature_f 
+FROM "delorean_stats" 
+WHERE device = 'engine' AND time >= now() - interval '15 minutes'
+```
 
 **DeLorean Velocity**
 ```sql
@@ -150,26 +180,41 @@ FROM "delorean_stats"
 WHERE device = 'speedometer' AND time >= now() - interval '15 minutes'
 ```
 
-**Flux Capacitor Power**
-```sql
-SELECT last(power_level) 
-FROM "delorean_stats" 
-WHERE device = 'flux_capacitor' AND time >= now() - interval '1 minute'
-```
+## Data Metrics
 
-**Engine Temperature**
-```sql
-SELECT last(temperature_f) 
-FROM "delorean_stats" 
-WHERE device = 'engine' AND time >= now() - interval '1 minute'
-```
+The dashboard monitors various DeLorean time machine metrics that are produced by the data generator:
 
-**Time Travel Prediction**
-```sql
-SELECT MAX(velocity_mph) as max_velocity 
-FROM "delorean_stats" 
-WHERE device = 'speedometer' AND time >= now() - interval '5 minutes'
-```
+1. **Flux Capacitor Power**: 
+   - Tracks the power level of Doc Brown's key invention
+   - Stored as `power_level` in the `flux_capacitor` device
+   - Critical value: 121W (representing 1.21 gigawatts)
+   - Powers the temporal displacement
+
+2. **Vehicle Velocity**: 
+   - Monitors the DeLorean's current speed
+   - Stored as `velocity_mph` in the `speedometer` device
+   - Threshold value: 88 mph triggers time travel
+   - Shows patterns of acceleration and post-time-travel deceleration
+
+3. **Engine Temperature**:
+   - Tracks the modified V6 PRV engine temperature
+   - Stored as `temperature_f` in the `engine` device
+   - Safe range: 60-200°F
+   - Critical for stable operation across time periods
+
+4. **Mr. Fusion Fuel Level**: 
+   - Tracks the plutonium level in the Mr. Fusion Home Energy Reactor
+   - Represents technology from the 2015 timeline in BTTF Part II
+   - Stored as `plutonium_level` in the `mr_fusion` device
+   - Value range: 0-100%
+   - Gradually decreases over time with occasional refueling events
+
+5. **Time Circuits Power Stability**:
+   - Monitors voltage fluctuations in the time circuits that control destination time periods
+   - Essential for navigation between past, present and future
+   - Stored as `voltage` in the `time_circuits` device
+   - Normal range: 11-13V with occasional spikes/drops
+   - Critical for accurate temporal displacement
 
 ## Features
 
@@ -180,30 +225,43 @@ This demo showcases:
 3. **SQL for Time Series**: Industry-standard SQL for complex time-based queries
 4. **Real-time Visualization**: Monitor DeLorean metrics as they happen
 5. **Predictive Analytics**: Simple forecasting without complex data science
+6. **Themed Dashboard**: Back to the Future-inspired visual design
 
 ## Dashboard Panels & Time-Based Analysis
 
-The dashboard provides a complete view of DeLorean metrics through four carefully designed panels, each representing a different aspect of time-based analysis:
+The enhanced dashboard provides a complete view of DeLorean metrics through six carefully designed panels, each representing a different aspect of time-based analysis:
 
 ### 1. Flux Capacitor Power (Present Status)
-- **Type**: Gauge panel showing current power at 121W (1.21 gigawatts)
+- **Type**: Gauge panel showing current power
 - **Purpose**: Real-time monitoring of current power levels
 - **Insight**: Indicates if the DeLorean has sufficient power for time travel
 - **Back to the Future Reference**: Doc Brown's famous "1.21 gigawatts!" exclamation
 
-### 2. Engine Temperature (Present + Recent Trends)
+### 2. Current Speed / Time Travel Threshold (Immediate Future)
+- **Type**: Stat panel with area graph
+- **Purpose**: Shows proximity to time travel speed
+- **Insight**: When this value reaches 88 mph, time travel is imminent
+- **Back to the Future Reference**: "88 miles per hour!" threshold for time travel
+
+### 3. Mr. Fusion Fuel Level (Future Technology)
+- **Type**: Gauge panel showing percentage
+- **Purpose**: Monitors fuel reserves for the time machine
+- **Insight**: Indicates if refueling is needed before time travel
+- **Back to the Future Reference**: The Mr. Fusion Home Energy Reactor from BTTF Part II (2015 timeline)
+
+### 4. Time Circuits Power Stability (Temporal Navigation)
+- **Type**: Time series chart
+- **Purpose**: Monitors voltage stability over time
+- **Insight**: Fluctuations could result in inaccurate temporal destinations
+- **Back to the Future Reference**: The time circuits that allow specific date selection for past/future travel
+
+### 5. Engine Temperature (Present + Recent Trends)
 - **Type**: Stat panel with area graph
 - **Purpose**: Current reading with immediate historical context
 - **Insight**: Shows if engine temperature is stable or fluctuating
 - **Importance**: Critical for safe operation across different time periods
 
-### 3. Time Travel Prediction (Future Analysis)
-- **Type**: Stat panel showing predictive metric
-- **Purpose**: Forecasts when time travel conditions will be met
-- **Insight**: When this value reaches 88, time travel is imminent
-- **Back to the Future Reference**: Predictive analytics for time travel events
-
-### 4. DeLorean Velocity (Historical Analysis)
+### 6. DeLorean Velocity (Historical Analysis)
 - **Type**: Time series chart over 15 minutes
 - **Purpose**: Historical pattern analysis
 - **Insight**: Shows velocity patterns with 88 mph threshold line
@@ -227,20 +285,14 @@ The dashboard provides a complete view of DeLorean metrics through four carefull
 
 ### Grafana Dashboard Issues
 - Ensure your data source configuration is correct
-- Verify each panel has the proper SQL query
+- Verify that the InfluxDB data source name exactly matches "DeLorean_Monitoring"
 - Check that the time range includes data points
-- If panels still don't display data, try these simplified queries:
-  ```sql
-  -- Basic velocity check
-  SELECT velocity_mph FROM "delorean_stats" WHERE device = 'speedometer' LIMIT 10
-  
-  -- Basic flux capacitor check
-  SELECT power_level FROM "delorean_stats" WHERE device = 'flux_capacitor' LIMIT 10
-  ```
+- If some panels show no data, verify that your data generator is producing all the expected metrics
 
 ### .NET Application Errors
 - Make sure all required packages are installed
 - Check for runtime errors in the console output
+- Verify that the configuration variables are set correctly in Program.cs
 
 ## License
 

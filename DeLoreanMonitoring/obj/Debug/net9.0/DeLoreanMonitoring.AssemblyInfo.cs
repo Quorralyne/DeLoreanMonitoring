@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DeLoreanMonitoring")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e49554f189ee419bd1802c92b512b2f251125df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d64db2025541257a50a06a19fdfe59fbe95e9713")]
 [assembly: System.Reflection.AssemblyProductAttribute("DeLoreanMonitoring")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DeLoreanMonitoring")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

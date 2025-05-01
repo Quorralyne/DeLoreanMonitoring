@@ -57,9 +57,9 @@ namespace DeLoreanMonitoring
             _logger = logger;
             
             // Replace with your actual values
-            _influxUrl = "https://us-east-1-1.aws.cloud2.influxdata.com/api/v2/write";
-            _influxToken = "Csc7reO6J1ozs8JxA2QNjC2drwAaXMBTG9_b2Kl0lNmxIfAyfRcMCjRwf2t83MfHqySHKfz3SFKcmEHMb7aNBQ==";
-            _influxOrg = "194b35e60685e18d";
+            _influxUrl = "https://YOUR_INFLUXDB_INSTANCE.aws.cloud2.influxdata.com/api/v2/write";
+            _influxToken = "YOUR_INFLUX_TOKEN";
+            _influxOrg = "YOUR_ORG_ID";
             _influxBucket = "gigawatt_metrics";
         }
 
